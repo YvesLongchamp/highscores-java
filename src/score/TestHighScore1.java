@@ -34,7 +34,9 @@ public class TestHighScore1 {
 		String score = "";
 
 		Path path = Paths.get(PATH_SCORES);
-
+		
+		HighScore1 highscore = new HighScore1();
+		highscore.main(args);
 		try {
 
 			if (sc.hasNext()) {
