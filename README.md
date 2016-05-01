@@ -5,7 +5,7 @@
 
 <p>Project for the school, with the objective of managing the scores of a game.</p>
 
-<a href="https://github.com/YvesLongchamp/highscores-java/doc/index.html">Documentation</a>
+<a href="http://yveslongchamp.github.io/highscores-java/">Documentation</a>
 
 </html>
 
