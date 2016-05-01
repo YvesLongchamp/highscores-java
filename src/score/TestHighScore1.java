@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class TestHighScore1 {
 
-	static final String PATH_SCORES = "/Users/yves.longchamp/Desktop/scoreSamples.txt";
+	static final String PATH_SCORES = "scoreSamples.txt";
 
 	/**
 	 * 
