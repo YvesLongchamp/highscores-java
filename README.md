@@ -1,10 +1,9 @@
-<html>
+
 
 # highscores-java
 
-<p>Project for the school, with the objective of managing the scores of a game.</p>
+Project for the school, with the objective of managing the scores of a game.
 
-<a href="http://yveslongchamp.github.io/highscores-java/">Documentation</a>
+[Documentation](http://yveslongchamp.github.io/highscores-java/ "Documentation link")
 
-</html>
 
