@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html>
+
 # highscores-java
 
-Project for the school, with the objective of managing the scores of a game.
+<p>Project for the school, with the objective of managing the scores of a game.</p>
 
-https://github.com/YvesLongchamp/highscores-java.git/doc/index.html
+<a href="https://github.com/YvesLongchamp/highscores-java.git/doc/index.html">Documentation</a>
+
+</html>
+
