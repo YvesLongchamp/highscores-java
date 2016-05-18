@@ -94,9 +94,11 @@ public class HighScore2 {
 	 */
 	public BestPlayer[] tenBestScores(List<String> scores) {
 		List<BestPlayer> allBest = new ArrayList<>();
+		String[] scorePostSplit;
 		for (int i = 0; i < scores.size(); i++) {
-			allBest.add(new BestPlayer(Integer.parseInt(scores.get(i)),
-					"Player" + Integer.toString(i)));
+			scorePostSplit = scores.get(i).split(",");
+			allBest.add(new BestPlayer(Integer.parseInt(scorePostSplit[1]),
+					scorePostSplit[2]));
 		}
 		Collections.sort(allBest);
 		BestPlayer[] top10 = new BestPlayer[10];
