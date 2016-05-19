@@ -122,15 +122,10 @@ public class HighScore3 {
 
 		try {
 			
-			URL obj = new URL(URL_SCORES);
+			URL obj = new URL(URL_SCORES+"scores?="+Integer.toString(p.score) + "name?=" + p.player);
 			HttpURLConnection con;
 			con = (HttpURLConnection) obj.openConnection();
-			con.setRequestMethod("POST");
-			con.setDoOutput(true);
-			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-			wr.writeBytes(Integer.toString(p.score) + "," + p.player);
-			wr.flush();
-			wr.close();
+			con.setRequestMethod("GET");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
