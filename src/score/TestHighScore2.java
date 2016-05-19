@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class TestHighScore2 {
 
-	static final String PATH_SCORES = "scoreSamples.txt";
+	static final String PATH_SCORES = "/home/Etud/Téléchargements/scoreSamples.txt";
 
 	/**
 	 * 
@@ -33,7 +33,7 @@ public class TestHighScore2 {
 		String name = "";
 		String score = "";
 
-		Path path = Paths.get(PATH_SCORES);
+		//Path path = Paths.get(PATH_SCORES);
 		
 		HighScore2 highscore = new HighScore2();
 		highscore.main(args);
@@ -44,7 +44,7 @@ public class TestHighScore2 {
 				name = sc.next();
 			}
 
-			List<String> scores = Files.readAllLines(path);
+			List<String> scores = highscore.getScores();
 			top10 = new BestPlayer[10];
 			top10 = highscore.tenBestScores(scores);
 
@@ -53,7 +53,8 @@ public class TestHighScore2 {
 			e.printStackTrace();
 		}
 		
-		for(int j = 0 ; j < top10.length ; j++) {
+		System.out.println(top10);
+		for(int j = 0 ; j < top10.length && top10[j] != null ; j++) {
 			System.out.println("The player : " + top10[j].getPlayer() + " has the score of : "
 					+ top10[j].getScore());
 		}

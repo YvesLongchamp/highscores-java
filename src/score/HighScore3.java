@@ -1,12 +1,15 @@
 package score;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,7 +19,7 @@ import java.util.List;
  *         A class to operate our highscores but with an access to a server.
  * 
  */
-public class HighScore2 {
+public class HighScore3 {
 
 	static final String URL_SCORES = "https://thingspeak.com/channels/111603/feed.csv";
 
@@ -31,7 +34,7 @@ public class HighScore2 {
 	public static void main(String[] args) {
 		int index = 0;
 		List<String> newScores;
-		HighScore2 HighScore1 = new HighScore2();
+		HighScore3 HighScore1 = new HighScore3();
 
 		try {
 			newScores = HighScore1.getScores();
@@ -106,5 +109,31 @@ public class HighScore2 {
 			top10[j] = allBest.get(j);
 		}
 		return top10;
+	}
+
+	/**
+	 * sendPlayer send a player to the "ThingSpeak server", and add it to the 10
+	 * best.
+	 * 
+	 * @param p
+	 *            , the BestPlayer we want to add.
+	 */
+	public void sendPlayer(BestPlayer p) {
+
+		try {
+			
+			URL obj = new URL(URL_SCORES);
+			HttpURLConnection con;
+			con = (HttpURLConnection) obj.openConnection();
+			con.setRequestMethod("POST");
+			con.setDoOutput(true);
+			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			wr.writeBytes(Integer.toString(p.score) + "," + p.player);
+			wr.flush();
+			wr.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
