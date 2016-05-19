@@ -1,7 +1,6 @@
 package score;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,7 +8,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,7 +20,6 @@ import java.util.List;
 public class HighScore3 {
 
 	static final String URL_SCORES = "https://thingspeak.com/channels/111603/feed.csv";
-	static final String URL_GET = "https://api.thingspeak.com/update?api_key=CO7F00CBDKC532R2&field1=";
 
 	/**
 	 * The main display all the scores stored in the server with the URL right
@@ -33,15 +30,18 @@ public class HighScore3 {
 	 * 
 	 */
 	public static void main(String[] args) {
-		int index = 0;
+
 		List<String> newScores;
-		HighScore3 HighScore1 = new HighScore3();
+		BestPlayer[] TenScores;
+		HighScore2 HighScore1 = new HighScore2();
 
 		try {
 			newScores = HighScore1.getScores();
-			while (index < newScores.size()) {
-				System.out.println(newScores.get(index));
-				index++;
+			TenScores = HighScore1.tenBestScores(newScores);
+			for(BestPlayer T: TenScores ){
+				int Myscore = T.getScore();
+			String Myname = T.getPlayer();
+			System.out.println(Myname + " : " +Myscore);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -64,8 +64,7 @@ public class HighScore3 {
 
 		List<String> finalScores = new ArrayList<>();
 		try {
-			URL scoreURL = new URL(URL_GET);
-			
+			URL scoreURL = new URL(URL_SCORES);
 			InputStream scores = scoreURL.openStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					scores));
@@ -102,8 +101,8 @@ public class HighScore3 {
 		String[] scorePostSplit;
 		for (int i = 0; i < scores.size(); i++) {
 			scorePostSplit = scores.get(i).split(",");
-			allBest.add(new BestPlayer(Integer.parseInt(scorePostSplit[1]),
-					scorePostSplit[2]));
+			allBest.add(new BestPlayer(Integer.parseInt(scorePostSplit[2]),
+					scorePostSplit[3]));
 		}
 		Collections.sort(allBest);
 		BestPlayer[] top10 = new BestPlayer[10];
@@ -112,6 +111,7 @@ public class HighScore3 {
 		}
 		return top10;
 	}
+
 
 	/**
 	 * sendPlayer send a player to the "ThingSpeak server", and add it to the 10

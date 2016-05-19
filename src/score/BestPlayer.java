@@ -1,6 +1,6 @@
 package score;
 
-import java.util.Comparator;
+
 
 public class BestPlayer implements Comparable<BestPlayer> {
 	int score;

@@ -29,15 +29,18 @@ public class HighScore2 {
 	 * 
 	 */
 	public static void main(String[] args) {
-		int index = 0;
+
 		List<String> newScores;
+		BestPlayer[] TenScores;
 		HighScore2 HighScore1 = new HighScore2();
 
 		try {
 			newScores = HighScore1.getScores();
-			while (index < newScores.size()) {
-				System.out.println(newScores.get(index));
-				index++;
+			TenScores = HighScore1.tenBestScores(newScores);
+			for(BestPlayer T: TenScores ){
+				int Myscore = T.getScore();
+			String Myname = T.getPlayer();
+			System.out.println(Myname + " : " +Myscore);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -97,8 +100,8 @@ public class HighScore2 {
 		String[] scorePostSplit;
 		for (int i = 0; i < scores.size(); i++) {
 			scorePostSplit = scores.get(i).split(",");
-			allBest.add(new BestPlayer(Integer.parseInt(scorePostSplit[1]),
-					scorePostSplit[2]));
+			allBest.add(new BestPlayer(Integer.parseInt(scorePostSplit[2]),
+					scorePostSplit[3]));
 		}
 		Collections.sort(allBest);
 		BestPlayer[] top10 = new BestPlayer[10];

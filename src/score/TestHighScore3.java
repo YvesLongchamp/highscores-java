@@ -31,7 +31,7 @@ public class TestHighScore3 {
 
 		Scanner sc = new Scanner(System.in);
 		String name = "";
-		String score = "";
+		int score = 100;
 
 		//Path path = Paths.get(PATH_SCORES);
 		
