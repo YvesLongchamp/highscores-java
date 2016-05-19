@@ -22,6 +22,7 @@ import java.util.List;
 public class HighScore3 {
 
 	static final String URL_SCORES = "https://thingspeak.com/channels/111603/feed.csv";
+	static final String URL_GET = "https://api.thingspeak.com/update?api_key=CO7F00CBDKC532R2&field1=";
 
 	/**
 	 * The main display all the scores stored in the server with the URL right
@@ -63,7 +64,8 @@ public class HighScore3 {
 
 		List<String> finalScores = new ArrayList<>();
 		try {
-			URL scoreURL = new URL(URL_SCORES);
+			URL scoreURL = new URL(URL_GET);
+			
 			InputStream scores = scoreURL.openStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					scores));
@@ -122,7 +124,7 @@ public class HighScore3 {
 
 		try {
 			
-			URL obj = new URL(URL_SCORES+"scores?="+Integer.toString(p.score) + "name?=" + p.player);
+			URL obj = new URL(URL_SCORES+p.player + "field2?=" + Integer.toString(p.score));
 			HttpURLConnection con;
 			con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("GET");
