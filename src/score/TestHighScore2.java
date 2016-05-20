@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class TestHighScore2 {
 
-	static final String PATH_SCORES = "/home/Etud/Téléchargements/scoreSamples.txt";
+	static final String PATH_SCORES = "scoreSamples.txt";
 
 	/**
 	 * 
@@ -30,36 +30,41 @@ public class TestHighScore2 {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		String name = "";
-		String score = "";
+		String name = " ";
+		String Score= " ";
+
+		Path path = Paths.get(PATH_SCORES);
 
 		//Path path = Paths.get(PATH_SCORES);
 		
 		HighScore2 highscore = new HighScore2();
-		highscore.main(args);
 		BestPlayer[] top10 = new BestPlayer[10];
 		try {
 
 			if (sc.hasNext()) {
 				name = sc.next();
+				sc.close();
 			}
+			
+			List<String> scores = Files.readAllLines(path);
+			int random = (int) (Math.random() * scores.size());
+			Score = scores.get(random);
 
-			List<String> scores = highscore.getScores();
+			List<String> Topscores = highscore.getScores();
 			top10 = new BestPlayer[10];
-			top10 = highscore.tenBestScores(scores);
+			top10 = highscore.tenBestScores(Topscores);
 
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-		
-		System.out.println(top10);
+		System.out.println("The player : " + name + " has the score of : "+ Score);
 		for(int j = 0 ; j < top10.length && top10[j] != null ; j++) {
-			System.out.println("The player : " + top10[j].getPlayer() + " has the score of : "
+			System.out.println("The player : " + top10[j].getPlayer() + " ,has the score of : "
 					+ top10[j].getScore());
 		}
 
-		sc.close();
+		
 	}
 
 }

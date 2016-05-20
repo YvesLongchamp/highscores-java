@@ -14,7 +14,7 @@ import java.util.Scanner;
  *         A class to operate, and test our highscores.
  *
  */
-public class TestHighScore3 {
+public class TestHighScore4 {
 
 	static final String PATH_SCORES = "scoreSamples.txt";
 
@@ -70,3 +70,4 @@ public class TestHighScore3 {
 	}
 
 }
+

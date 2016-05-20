@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class TestHighScore1 {
 
-	static final String PATH_SCORES = "scoreSamples.txt";
+	static final String PATH_SCORES = "data/scoreSamples.txt";
 
 	/**
 	 * 
@@ -31,12 +31,10 @@ public class TestHighScore1 {
 
 		Scanner sc = new Scanner(System.in);
 		String name = "";
-		String score = "";
+		String Score= " ";
 
 		Path path = Paths.get(PATH_SCORES);
 		
-		HighScore1 highscore = new HighScore1();
-		highscore.main(args);
 		try {
 
 			if (sc.hasNext()) {
@@ -45,14 +43,14 @@ public class TestHighScore1 {
 
 			List<String> scores = Files.readAllLines(path);
 			int random = (int) (Math.random() * scores.size());
-			score = scores.get(random);
+			Score = scores.get(random);
 
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-		System.out.println("The player : " + name + " has the score of : "
-				+ score);
+		
+		System.out.println("The player : " + name + " has the score of : "+ Score);
 		sc.close();
 	}
 

@@ -37,11 +37,7 @@ public class HighScore2 {
 		try {
 			newScores = HighScore1.getScores();
 			TenScores = HighScore1.tenBestScores(newScores);
-			for(BestPlayer T: TenScores ){
-				int Myscore = T.getScore();
-			String Myname = T.getPlayer();
-			System.out.println(Myname + " : " +Myscore);
-			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
