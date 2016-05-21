@@ -31,12 +31,11 @@ public class HighScore2 {
 	public static void main(String[] args) {
 
 		List<String> newScores;
-		BestPlayer[] TenScores;
 		HighScore2 HighScore1 = new HighScore2();
 
 		try {
 			newScores = HighScore1.getScores();
-			TenScores = HighScore1.tenBestScores(newScores);
+			BestPlayer[] TenScores = HighScore1.tenBestScores(newScores);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

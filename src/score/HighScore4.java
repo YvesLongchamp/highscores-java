@@ -23,34 +23,6 @@ public class HighScore4 {
 	static final String URL_SCORES1 = "https://thingspeak.com/channels/111603/feed.csv";
 
 	/**
-	 * The main display all the scores stored in the server with the URL right
-	 * above.
-	 * 
-	 * @param args
-	 *            , useless here.
-	 * 
-	 */
-	public static void main(String[] args) {
-
-		List<String> newScores;
-		BestPlayer[] TenScores;
-		HighScore2 HighScore1 = new HighScore2();
-
-		try {
-			newScores = HighScore1.getScores();
-			TenScores = HighScore1.tenBestScores(newScores);
-			for(BestPlayer T: TenScores ){
-				int Myscore = T.getScore();
-			String Myname = T.getPlayer();
-			System.out.println(Myname + " : " +Myscore);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	/**
 	 * 
 	 * The getScores method allows to get the scores from the URL of our
 	 * ThingSpeak.
